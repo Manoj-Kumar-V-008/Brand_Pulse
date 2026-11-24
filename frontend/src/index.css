@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #04060d;
+    background-image:
+      radial-gradient(ellipse 60% 45% at 12% 8%, rgba(6, 182, 212, 0.16), transparent 55%),
+      radial-gradient(ellipse 55% 40% at 88% 10%, rgba(99, 102, 241, 0.16), transparent 52%),
+      radial-gradient(ellipse 50% 40% at 50% 95%, rgba(16, 185, 129, 0.10), transparent 55%),
+      linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+.glass-panel {
+  background: linear-gradient(155deg, rgba(15, 23, 45, 0.84), rgba(7, 11, 24, 0.94));
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 20px 50px -18px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-panel-hover {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-panel-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(34, 211, 238, 0.42);
+  box-shadow:
+    0 24px 55px -15px rgba(6, 182, 212, 0.22),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.holo-border {
+  position: relative;
+}
+.holo-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(130deg, rgba(6, 182, 212, 0.55), rgba(99, 102, 241, 0.35), rgba(16, 185, 129, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); opacity: 0; }
+  45% { opacity: 0.35; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+
+.holo-scanline {
+  animation: scanline 6s linear infinite;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(10, 16, 32, 0.7);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.65);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.7);
+}

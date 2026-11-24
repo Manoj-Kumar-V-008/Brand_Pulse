@@ -1,0 +1,37 @@
+BrandPulse 3D — v2.0 Upgrade Patch
+==================================
+No new pip or npm packages are required!
+
+HOW TO APPLY THIS PATCH:
+1. Extract the contents of brandpulse-3d-v2-patch.zip directly into your existing
+   brandpulse-3d/ root folder and choose "Replace / Merge" when prompted.
+   (Your .venv and node_modules will NOT be touched!)
+
+2. Restart your FastAPI backend (if running) so the new domain-aware competitor engine
+   and auto-seeded competitor records load into brandpulse.db:
+      cd backend
+      uvicorn app.main:app --reload --port 8000
+
+3. Refresh your frontend at http://localhost:5173 (Vite hot-reloads automatically).
+
+FILES INCLUDED IN THIS PATCH:
+Backend (5 files):
+  - backend/app/analytics/competitors.py   (NEW: 60+ brand industry graph + semantic fallback)
+  - backend/app/analytics/metrics.py       (UPDATED: SoV brand domain + accent color)
+  - backend/app/database.py                (UPDATED: Adds Adidas, Puma, New Balance, BYD, Rivian, Tata Motors, OnePlus, Google, Zepto seeds)
+  - backend/app/schemas.py                 (UPDATED: industry, brand_domain, competitors_used)
+  - backend/app/main.py                    (UPDATED: concurrent same-industry SoV + /api/competitors)
+
+Frontend (12 files):
+  - frontend/index.html                                (UPDATED: Space Grotesk display font)
+  - frontend/tailwind.config.js                        (UPDATED: font-display & animations)
+  - frontend/src/index.css                             (UPDATED: cyber-grid, holo-border, scanlines)
+  - frontend/src/types/index.ts                        (UPDATED: industry & logo metadata types)
+  - frontend/src/utils/brandMeta.ts                    (NEW: official SimpleIcons slugs & brand accents)
+  - frontend/src/components/BrandLogo.tsx              (NEW: real brand logos with 3-tier fallback)
+  - frontend/src/components/SentimentOrb3D.tsx         (UPGRADED: holographic cage, brand logo core, laser beams, 3D Aspect Constellation)
+  - frontend/src/components/AlgorithmsExplainedTab.tsx (NEW: all 7 DS/NLP/AI/KRR/Analytics algorithms explained with formulas & live readings)
+  - frontend/src/components/AnalyticsDashboard.tsx     (UPGRADED: industry badge, real competitor logos, custom rival compare input)
+  - frontend/src/components/Navbar.tsx                 (UPGRADED: 5th Algorithms tab)
+  - frontend/src/components/BrandSearchBar.tsx         (UPGRADED: real brand logos on chips)
+  - frontend/src/App.tsx                               (UPGRADED: wires v2 features)
